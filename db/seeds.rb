@@ -24,7 +24,7 @@ u8 = User.create!(username: Faker::Movies::HarryPotter.unique.character, passwor
 u9 = User.create!(username: Faker::Movies::HarryPotter.unique.character, password: '123', email: 'hogwarts@gmail.com', display_name: Faker::Movies::HarryPotter.unique.character, bio: Faker::Movies::HarryPotter.unique.quote, phone_number: '123-456-7890')
 u10 = User.create!(username: Faker::Movies::HarryPotter.unique.character, password: '123', email: 'hogwarts@gmail.com', display_name: Faker::Movies::HarryPotter.unique.character, bio: Faker::Movies::HarryPotter.unique.quote, phone_number: '123-456-7890')
 
-w1 = Workspace.create!(name: 'Hogwarts', join_code: '3houses')
+w1 = Workspace.create!(name: 'Hogwarts', join_code: '4houses')
 w2 = Workspace.create!(name: 'Order of the Pheonix', join_code: 'deathlyhallows')
 
 m1 = WorkspaceMember.create!(workspace_id: w1.id, user_id: u1.id)
