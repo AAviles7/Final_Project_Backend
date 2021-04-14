@@ -7,6 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
 
+ChannelMessage.destroy_all
+Conversation.destroy_all
+DirectMessage.destroy_all
 ChannelMember.destroy_all
 WorkspaceMember.destroy_all
 Channel.destroy_all
@@ -65,3 +68,9 @@ cm17 = ChannelMember.create!(user_id: u8.id, channel_id: c6.id)
 cm18 = ChannelMember.create!(user_id: u9.id, channel_id: c6.id)
 cm19 = ChannelMember.create!(user_id: u10.id, channel_id: c5.id)
 cm20 = ChannelMember.create!(user_id: u10.id, channel_id: c6.id)
+
+cmsg1 = ChannelMessage.create!(user_id: u1.id, channel_id: c1.id, body: 'sample text')
+
+
+conv1 = Conversation.create!(sender_id: u1.id, receiver_id: u2.id)
+dm1 = DirectMessage.create!(user_id: u1.id, conversation_id: conv1.id, body: 'sample text')

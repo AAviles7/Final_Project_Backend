@@ -1,9 +1,8 @@
 class UsersController < ApplicationController
-    # skip_before_action :authorized, only: [:create]
 
     def index 
         users = User.all
-        render json: users
+        render json: users, include: [:sent_conversations, :received_conversations, :direct_messages]
     end 
 
     def create
@@ -20,7 +19,7 @@ class UsersController < ApplicationController
 
     def show
         user = User.find_by(id: params[:id])
-        render json: user
+        render json: user, include: [:sent_conversations, :received_conversations, :direct_messages]
     end 
 
     def permitted_params
@@ -30,7 +29,7 @@ class UsersController < ApplicationController
     def token_authenticate
         token = request.headers["Authorization"]
         user = User.find(decoded_token[0]['user_id'])
-        render json:user 
+        render json:user
     end 
 
 end

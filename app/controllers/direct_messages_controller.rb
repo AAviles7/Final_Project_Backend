@@ -2,13 +2,13 @@ class DirectMessagesController < ApplicationController
 
     def index
         directmessages = DirectMessage.all
-        render json: directmessages
+        render json: directmessages, include: [:user, :conversation]
     end
 
     def create
         directmessage = DirectMessage.create!({
             sender_id: permitted_params['sender_id'],
-            reciever_id: permitted_params['reciever_id'],
+            conversation_id: permitted_params['conversation_id'],
             body: permitted_params['body']
         })
         render json: directmessage
@@ -16,11 +16,11 @@ class DirectMessagesController < ApplicationController
 
     def show
         directmessage = DirectMessage.find_by(id: params[:id])
-        render json: directmessage
+        render json: directmessage, include: [:user, :conversation]
     end
 
     def permitted_params
-        params.require(:directmessage).permit(:sender_id, :reciever_id, :body)
+        params.require(:directmessage).permit(:sender_id, :conversation_id, :body)
     end
 
 end

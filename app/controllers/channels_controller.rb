@@ -2,7 +2,7 @@ class ChannelsController < ApplicationController
 
     def index
         channels = Channel.all
-        render json: channels#, include: [:users]
+        render json: channels, include: [:users, :channel_messages]
     end
 
     def create
@@ -14,7 +14,7 @@ class ChannelsController < ApplicationController
 
     def show
         channel = Channel.find_by(id: params[:id])
-        render json: channel#, include: [:users]
+        render json: channel, include: [:users, :channel_messages]
     end
 
     def permitted_params
