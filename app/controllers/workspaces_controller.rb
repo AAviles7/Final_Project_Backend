@@ -2,7 +2,7 @@ class WorkspacesController < ApplicationController
 
     def index
         workspaces = Workspace.all
-        render json: workspaces, include: [:channels, :users]
+        render json: workspaces, include: [:chatrooms, :users]
     end
 
     def create
@@ -15,7 +15,7 @@ class WorkspacesController < ApplicationController
 
     def show
         workspace = Workspace.find_by(id: params[:id])
-        render json: workspace, include: [:channels, :users]
+        render json: workspace, include: [:chatrooms, :users]
     end
 
     def permitted_params

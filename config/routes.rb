@@ -1,16 +1,22 @@
 Rails.application.routes.draw do
+  
+  resources :chatrooms
   resources :conversations
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :users
   resources :workspaces
   resources :workspace_members
   resources :direct_messages
-  resources :channels
-  resources :channel_messages
-  resources :channel_members
+  resources :threads
+  resources :thread_messages
+  resources :thread_members
 
   get '/login', to: 'users#token_authenticate'
   post '/login', to: 'auth#create'
   post 'signup', to: 'users#create'
-  get '/profile', to: 'users#profile'   
+  get '/profile', to: 'users#profile'
+
+
+  mount ActionCable.server => '/cable'
+
+
 end

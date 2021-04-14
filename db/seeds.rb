@@ -7,12 +7,12 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
 
-ChannelMessage.destroy_all
+ChatroomMessage.destroy_all
 Conversation.destroy_all
 DirectMessage.destroy_all
-ChannelMember.destroy_all
+ChatroomMember.destroy_all
 WorkspaceMember.destroy_all
-Channel.destroy_all
+Chatroom.destroy_all
 Workspace.destroy_all
 User.destroy_all
 
@@ -41,35 +41,35 @@ m8 = WorkspaceMember.create!(workspace_id: w2.id, user_id: u8.id)
 m9 = WorkspaceMember.create!(workspace_id: w2.id, user_id: u9.id)
 m10 = WorkspaceMember.create!(workspace_id: w2.id, user_id: u10.id)
 
-c1 = Channel.create!(name: Faker::Movies::HarryPotter.unique.house, workspace_id: w1.id)
-c2 = Channel.create!(name: Faker::Movies::HarryPotter.unique.house, workspace_id: w1.id)
-c3 = Channel.create!(name: Faker::Movies::HarryPotter.unique.house, workspace_id: w1.id)
-c4 = Channel.create!(name: Faker::Movies::HarryPotter.unique.house, workspace_id: w1.id)
-c5 = Channel.create!(name: Faker::Movies::HarryPotter.unique.location, workspace_id: w2.id)
-c6 = Channel.create!(name: Faker::Movies::HarryPotter.unique.location, workspace_id: w2.id)
+c1 = Chatroom.create!(name: Faker::Movies::HarryPotter.unique.house, workspace_id: w1.id)
+c2 = Chatroom.create!(name: Faker::Movies::HarryPotter.unique.house, workspace_id: w1.id)
+c3 = Chatroom.create!(name: Faker::Movies::HarryPotter.unique.house, workspace_id: w1.id)
+c4 = Chatroom.create!(name: Faker::Movies::HarryPotter.unique.house, workspace_id: w1.id)
+c5 = Chatroom.create!(name: Faker::Movies::HarryPotter.unique.location, workspace_id: w2.id)
+c6 = Chatroom.create!(name: Faker::Movies::HarryPotter.unique.location, workspace_id: w2.id)
 
-cm1 = ChannelMember.create!(user_id: u1.id, channel_id: c1.id)
-cm2 = ChannelMember.create!(user_id: u1.id, channel_id: c2.id)
-cm3 = ChannelMember.create!(user_id: u1.id, channel_id: c3.id)
-cm4 = ChannelMember.create!(user_id: u1.id, channel_id: c4.id)
-cm5 = ChannelMember.create!(user_id: u2.id, channel_id: c1.id)
-cm6 = ChannelMember.create!(user_id: u2.id, channel_id: c3.id)
-cm7 = ChannelMember.create!(user_id: u3.id, channel_id: c1.id)
-cm8 = ChannelMember.create!(user_id: u4.id, channel_id: c1.id)
-cm9 = ChannelMember.create!(user_id: u5.id, channel_id: c1.id)
-cm10 = ChannelMember.create!(user_id: u6.id, channel_id: c1.id)
-cm11 = ChannelMember.create!(user_id: u6.id, channel_id: c2.id)
-cm12 = ChannelMember.create!(user_id: u6.id, channel_id: c4.id)
-cm13 = ChannelMember.create!(user_id: u6.id, channel_id: c3.id)
-cm14 = ChannelMember.create!(user_id: u7.id, channel_id: c5.id)
-cm15 = ChannelMember.create!(user_id: u7.id, channel_id: c6.id)
-cm16 = ChannelMember.create!(user_id: u8.id, channel_id: c5.id)
-cm17 = ChannelMember.create!(user_id: u8.id, channel_id: c6.id)
-cm18 = ChannelMember.create!(user_id: u9.id, channel_id: c6.id)
-cm19 = ChannelMember.create!(user_id: u10.id, channel_id: c5.id)
-cm20 = ChannelMember.create!(user_id: u10.id, channel_id: c6.id)
+cm1 = ChatroomMember.create!(user_id: u1.id, chatroom_id: c1.id)
+cm2 = ChatroomMember.create!(user_id: u1.id, chatroom_id: c2.id)
+cm3 = ChatroomMember.create!(user_id: u1.id, chatroom_id: c3.id)
+cm4 = ChatroomMember.create!(user_id: u1.id, chatroom_id: c4.id)
+cm5 = ChatroomMember.create!(user_id: u2.id, chatroom_id: c1.id)
+cm6 = ChatroomMember.create!(user_id: u2.id, chatroom_id: c3.id)
+cm7 = ChatroomMember.create!(user_id: u3.id, chatroom_id: c1.id)
+cm8 = ChatroomMember.create!(user_id: u4.id, chatroom_id: c1.id)
+cm9 = ChatroomMember.create!(user_id: u5.id, chatroom_id: c1.id)
+cm10 = ChatroomMember.create!(user_id: u6.id, chatroom_id: c1.id)
+cm11 = ChatroomMember.create!(user_id: u6.id, chatroom_id: c2.id)
+cm12 = ChatroomMember.create!(user_id: u6.id, chatroom_id: c4.id)
+cm13 = ChatroomMember.create!(user_id: u6.id, chatroom_id: c3.id)
+cm14 = ChatroomMember.create!(user_id: u7.id, chatroom_id: c5.id)
+cm15 = ChatroomMember.create!(user_id: u7.id, chatroom_id: c6.id)
+cm16 = ChatroomMember.create!(user_id: u8.id, chatroom_id: c5.id)
+cm17 = ChatroomMember.create!(user_id: u8.id, chatroom_id: c6.id)
+cm18 = ChatroomMember.create!(user_id: u9.id, chatroom_id: c6.id)
+cm19 = ChatroomMember.create!(user_id: u10.id, chatroom_id: c5.id)
+cm20 = ChatroomMember.create!(user_id: u10.id, chatroom_id: c6.id)
 
-cmsg1 = ChannelMessage.create!(user_id: u1.id, channel_id: c1.id, body: 'sample text')
+cmsg1 = ChatroomMessage.create!(user_id: u1.id, chatroom_id: c1.id, body: 'sample text')
 
 
 conv1 = Conversation.create!(sender_id: u1.id, receiver_id: u2.id)
