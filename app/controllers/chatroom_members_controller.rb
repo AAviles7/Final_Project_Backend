@@ -19,7 +19,7 @@ class ChatroomMembersController < ApplicationController
     end
 
     def permitted_params
-        params.require(:chatroommember).permit(:user_id, :chatroom_id)
+        params.require(:chatroom_member).permit(:user_id, :chatroom_id)
     end
 
 end

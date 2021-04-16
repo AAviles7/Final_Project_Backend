@@ -20,7 +20,7 @@ class DirectMessagesController < ApplicationController
     end
 
     def permitted_params
-        params.require(:directmessage).permit(:sender_id, :conversation_id, :body)
+        params.require(:direct_message).permit(:sender_id, :conversation_id, :body)
     end
 
 end

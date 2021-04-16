@@ -16,8 +16,8 @@ Chatroom.destroy_all
 Workspace.destroy_all
 User.destroy_all
 
-u1 = User.create!(username: 'harry', password: '123', email: 'hogwarts@gmail.com', display_name: Faker::Movies::HarryPotter.unique.character, bio: Faker::Movies::HarryPotter.unique.quote, phone_number: '123-456-7890')
-u2 = User.create!(username: Faker::Movies::HarryPotter.unique.character, password: '123', email: 'hogwarts@gmail.com', display_name: Faker::Movies::HarryPotter.unique.character, bio: Faker::Movies::HarryPotter.unique.quote, phone_number: '123-456-7890')
+u1 = User.create!(username: 'harry', password: '123', email: 'hogwarts@gmail.com', display_name: 'Harry Potter', bio: Faker::Movies::HarryPotter.unique.quote, phone_number: '123-456-7890')
+u2 = User.create!(username: 'ron', password: '123', email: 'hogwarts@gmail.com', display_name: 'Ron Weasley', bio: Faker::Movies::HarryPotter.unique.quote, phone_number: '123-456-7890')
 u3 = User.create!(username: Faker::Movies::HarryPotter.unique.character, password: '123', email: 'hogwarts@gmail.com', display_name: Faker::Movies::HarryPotter.unique.character, bio: Faker::Movies::HarryPotter.unique.quote, phone_number: '123-456-7890')
 u4 = User.create!(username: Faker::Movies::HarryPotter.unique.character, password: '123', email: 'hogwarts@gmail.com', display_name: Faker::Movies::HarryPotter.unique.character, bio: Faker::Movies::HarryPotter.unique.quote, phone_number: '123-456-7890')
 u5 = User.create!(username: Faker::Movies::HarryPotter.unique.character, password: '123', email: 'hogwarts@gmail.com', display_name: Faker::Movies::HarryPotter.unique.character, bio: Faker::Movies::HarryPotter.unique.quote, phone_number: '123-456-7890')
@@ -27,7 +27,7 @@ u8 = User.create!(username: Faker::Movies::HarryPotter.unique.character, passwor
 u9 = User.create!(username: Faker::Movies::HarryPotter.unique.character, password: '123', email: 'hogwarts@gmail.com', display_name: Faker::Movies::HarryPotter.unique.character, bio: Faker::Movies::HarryPotter.unique.quote, phone_number: '123-456-7890')
 u10 = User.create!(username: Faker::Movies::HarryPotter.unique.character, password: '123', email: 'hogwarts@gmail.com', display_name: Faker::Movies::HarryPotter.unique.character, bio: Faker::Movies::HarryPotter.unique.quote, phone_number: '123-456-7890')
 
-w1 = Workspace.create!(name: 'Hogwarts', join_code: '4houses')
+w1 = Workspace.create!(name: 'Hogwarts', join_code: '123')
 w2 = Workspace.create!(name: 'Order of the Pheonix', join_code: 'deathlyhallows')
 
 m1 = WorkspaceMember.create!(workspace_id: w1.id, user_id: u1.id)
@@ -72,5 +72,5 @@ cm20 = ChatroomMember.create!(user_id: u10.id, chatroom_id: c6.id)
 cmsg1 = ChatroomMessage.create!(user_id: u1.id, chatroom_id: c1.id, body: 'sample text')
 
 
-conv1 = Conversation.create!(sender_id: u1.id, receiver_id: u2.id)
-dm1 = DirectMessage.create!(user_id: u1.id, conversation_id: conv1.id, body: 'sample text')
+# conv1 = Conversation.create!(sender_id: u1.id, receiver_id: u2.id)
+# dm1 = DirectMessage.create!(user_id: u1.id, conversation_id: conv1.id, body: 'sample text')

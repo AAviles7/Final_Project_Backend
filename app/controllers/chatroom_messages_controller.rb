@@ -6,12 +6,15 @@ class ChatroomMessagesController < ApplicationController
     end
 
     def create
-        chatroommessage = ChatroomMessage.create!({
-            user_id: permitted_params['user_id'],
-            chatroom_id: permitted_params['chatroom_id'],
-            body: permitted_params['body']
-        })
-        render json: chatroommessage
+        chatroommessage = ChatroomMessage.new(permitted_params)
+        chatroom = Chatroom.find(permitted_params[:chatroom_id])
+        if chatroommessage.save
+            serialized_data = ActiveModelSerializers::Adapter::Json.new(
+                ChatroomMessageSerializer.new(chatroommessage)
+            ).serializable_hash
+            ChatroomMessagesChannel.broadcast_to chatroom, serialized_data
+            head :ok
+        end
     end
 
     def show
@@ -19,8 +22,9 @@ class ChatroomMessagesController < ApplicationController
         render json: chatroommessage
     end
 
+    private
     def permitted_params
-        params.require(:chatroommessage).permit(:user_id, :chatroom_id, :body)
+        params.require(:chatroom_message).permit(:user_id, :chatroom_id, :body)
     end
 
 end

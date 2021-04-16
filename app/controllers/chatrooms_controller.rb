@@ -5,10 +5,14 @@ class ChatroomsController < ApplicationController
     end
 
     def create
-        chatroom = Chatroom.create!({
-            name: permitted_params['name']
-        })
-        render json: chatroom
+        chatroom = Chatroom.new(permitted_params)
+        if chatroom.save
+            serialized_data = ActiveModelSerializers::Adapter::Json.new(
+                ChatroomSerializer.new(chatroom)
+            ).serializable_hash
+            ActionCable.server.broadcast 'chatrooms_channel', serialized_data
+            head :ok
+        end
     end
 
     def show
