@@ -2,7 +2,7 @@ class ChatroomMessagesController < ApplicationController
 
     def index
         chatroommessages = ChatroomMessage.all
-        render json: chatroommessages
+        render json: chatroommessages, include: [:chatmessage_likes, :user]
     end
 
     def create
@@ -19,7 +19,7 @@ class ChatroomMessagesController < ApplicationController
 
     def show
         chatroommessage = ChatroomMessage.find_by(id: params[:id])
-        render json: chatroommessage
+        render json: chatroommessage, include: [:chatmessage_likes, :user]
     end
 
     private

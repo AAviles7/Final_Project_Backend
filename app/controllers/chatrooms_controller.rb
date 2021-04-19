@@ -21,6 +21,6 @@ class ChatroomsController < ApplicationController
     end
 
     def permitted_params
-        params.require(:chatroom).permit(:name)
+        params.require(:chatroom).permit(:name, :workspace_id)
     end
 end

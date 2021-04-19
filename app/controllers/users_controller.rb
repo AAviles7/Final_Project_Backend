@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 
     def index 
         users = User.all
-        render json: users#, include: [:chatroom_messages, :direct_messages, :chatrooms, :workspaces]
+        render json: users
     end 
 
     def create
@@ -19,7 +19,7 @@ class UsersController < ApplicationController
 
     def show
         user = User.find_by(id: params[:id])
-        render json: user#, include: [:chatroom_messages, :direct_messages, :chatrooms, :workspaces]
+        render json: user
     end 
 
     def permitted_params
