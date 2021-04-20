@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
 
+ChatmessageLike.destroy_all
 ChatroomMessage.destroy_all
 Conversation.destroy_all
 DirectMessage.destroy_all
@@ -30,12 +31,12 @@ u10 = User.create!(username: Faker::Movies::HarryPotter.unique.character, passwo
 w1 = Workspace.create!(name: 'Hogwarts', join_code: '123')
 w2 = Workspace.create!(name: 'Order of the Pheonix', join_code: 'deathlyhallows')
 
-100.times do
-    Workspace.create!(name: Faker::Movies::HarryPotter.house, join_code: '123')
-    Workspace.create!(name: Faker::Movies::HarryPotter.character, join_code: '123')
-    Workspace.create!(name: Faker::Movies::HarryPotter.location, join_code: '123')
-    Workspace.create!(name: Faker::Movies::HarryPotter.spell, join_code: '123')
-end
+# 100.times do
+#     Workspace.create!(name: Faker::Movies::HarryPotter.house, join_code: '123')
+#     Workspace.create!(name: Faker::Movies::HarryPotter.character, join_code: '123')
+#     Workspace.create!(name: Faker::Movies::HarryPotter.location, join_code: '123')
+#     Workspace.create!(name: Faker::Movies::HarryPotter.spell, join_code: '123')
+# end
 
 m1 = WorkspaceMember.create!(workspace_id: w1.id, user_id: u1.id)
 m2 = WorkspaceMember.create!(workspace_id: w1.id, user_id: u2.id)

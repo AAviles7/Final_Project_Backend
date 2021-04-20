@@ -46,3 +46,6 @@ gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'mast
 
 gem 'webpacker'
 gem 'react-rails'
+
+gem 'activestorage'
+gem 'fast_jsonapi'

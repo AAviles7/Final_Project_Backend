@@ -85,6 +85,7 @@ ActiveRecord::Schema.define(version: 10) do
   create_table "workspace_members", force: :cascade do |t|
     t.bigint "workspace_id", null: false
     t.bigint "user_id", null: false
+    t.boolean "remember", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_workspace_members_on_user_id"

@@ -20,7 +20,18 @@ class UsersController < ApplicationController
     def show
         user = User.find_by(id: params[:id])
         render json: user
-    end 
+    end
+
+    def edit
+        user = User.find_by(id: params[:id])
+        render json: user
+    end
+
+    def update
+        user = User.find_by(id: params[:id])
+        user.update(permitted_params)
+        render json: user
+    end
 
     def permitted_params
         params.require(:user).permit(:username, :password, :email, :display_name, :bio, :phone_number)

@@ -11,8 +11,8 @@ class ChatroomsController < ApplicationController
                 ChatroomSerializer.new(chatroom)
             ).serializable_hash
             ActionCable.server.broadcast 'chatrooms_channel', serialized_data
-            head :ok
         end
+        render json: serialized_data
     end
 
     def show

@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/faker-ruby/faker.git
-  revision: ad90d4c04d151fe9f8d610cd93d17acf9594097a
+  revision: afd768089d2ebff9f7b9e0afe1cf3c259aa6d4f5
   branch: master
   specs:
     faker (2.18.0)
@@ -85,17 +85,19 @@ GEM
     case_transform (0.2)
       activesupport
     concurrent-ruby (1.1.8)
-    connection_pool (2.2.4)
+    connection_pool (2.2.5)
     crass (1.0.6)
     erubi (1.10.0)
     execjs (2.7.0)
+    fast_jsonapi (1.5)
+      activesupport (>= 4.2)
     ffi (1.15.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     i18n (1.8.10)
       concurrent-ruby (~> 1.0)
     jsonapi-renderer (0.2.2)
-    jwt (2.2.2)
+    jwt (2.2.3)
     listen (3.5.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -189,10 +191,12 @@ PLATFORMS
 
 DEPENDENCIES
   active_model_serializers (~> 0.10.0)
+  activestorage
   bcrypt (~> 3.1.7)
   bootsnap (>= 1.4.4)
   byebug
   faker!
+  fast_jsonapi
   jwt
   listen (~> 3.3)
   mimemagic (= 0.3.5)
