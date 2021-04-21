@@ -8,7 +8,8 @@ class WorkspaceMembersController < ApplicationController
     def create
         workspace_member = WorkspaceMember.create!({
             workspace_id: permitted_params['workspace_id'],
-            user_id: permitted_params['user_id']
+            user_id: permitted_params['user_id'],
+            remember: permitted_params['remember']
         })
         render json: workspace_member
     end

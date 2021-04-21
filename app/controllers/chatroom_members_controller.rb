@@ -18,6 +18,11 @@ class ChatroomMembersController < ApplicationController
         render json: chatroommember
     end
 
+    def destroy
+        chatroommember = ChatroomMember.find_by(id: params[:id])
+        chatroommember.destroy
+    end
+
     def permitted_params
         params.require(:chatroom_member).permit(:user_id, :chatroom_id)
     end

@@ -10,7 +10,7 @@ class WorkspacesController < ApplicationController
             name: permitted_params['name'],
             join_code: permitted_params['join_code']
         })
-        render json: workspace
+        render json: workspace, include: [:chatrooms, :users]
     end
 
     def show

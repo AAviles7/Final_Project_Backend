@@ -3,6 +3,7 @@ class CreateConversations < ActiveRecord::Migration[6.1]
     create_table :conversations do |t|
       t.integer :sender_id
       t.integer :receiver_id
+      t.belongs_to :workspace, foreign_key: true
 
       t.timestamps
     end

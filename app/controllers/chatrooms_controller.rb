@@ -1,7 +1,7 @@
 class ChatroomsController < ApplicationController
     def index
         chatrooms = Chatroom.all
-        render json: chatrooms, include: [:users, :chatroom_messages]
+        render json: chatrooms
     end
 
     def create
@@ -10,14 +10,14 @@ class ChatroomsController < ApplicationController
             serialized_data = ActiveModelSerializers::Adapter::Json.new(
                 ChatroomSerializer.new(chatroom)
             ).serializable_hash
-            ActionCable.server.broadcast 'chatrooms_channel', serialized_data
+            ChatroomsChannel.broadcast_to 'chatrooms_channel', serialized_data
         end
-        render json: serialized_data
+        render json: chatroom
     end
 
     def show
         chatroom = Chatroom.find_by(id: params[:id])
-        render json: chatroom, include: [:users, :chatroom_messages]
+        render json: chatroom
     end
 
     def permitted_params

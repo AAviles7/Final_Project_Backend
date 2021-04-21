@@ -11,7 +11,7 @@ class DirectMessagesController < ApplicationController
             conversation_id: permitted_params['conversation_id'],
             body: permitted_params['body']
         })
-        render json: directmessage
+        render json: directmessage, include: [:user, :conversation]
     end
 
     def show

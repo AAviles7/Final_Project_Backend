@@ -54,11 +54,13 @@ ActiveRecord::Schema.define(version: 10) do
   create_table "conversations", force: :cascade do |t|
     t.integer "sender_id"
     t.integer "receiver_id"
+    t.bigint "workspace_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["receiver_id"], name: "index_conversations_on_receiver_id"
     t.index ["sender_id", "receiver_id"], name: "index_conversations_on_sender_id_and_receiver_id", unique: true
     t.index ["sender_id"], name: "index_conversations_on_sender_id"
+    t.index ["workspace_id"], name: "index_conversations_on_workspace_id"
   end
 
   create_table "direct_messages", force: :cascade do |t|
@@ -85,7 +87,7 @@ ActiveRecord::Schema.define(version: 10) do
   create_table "workspace_members", force: :cascade do |t|
     t.bigint "workspace_id", null: false
     t.bigint "user_id", null: false
-    t.boolean "remember", default: false
+    t.boolean "remember"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_workspace_members_on_user_id"
@@ -106,6 +108,7 @@ ActiveRecord::Schema.define(version: 10) do
   add_foreign_key "chatroom_messages", "chatrooms"
   add_foreign_key "chatroom_messages", "users"
   add_foreign_key "chatrooms", "workspaces"
+  add_foreign_key "conversations", "workspaces"
   add_foreign_key "direct_messages", "conversations"
   add_foreign_key "direct_messages", "users"
   add_foreign_key "workspace_members", "users"

@@ -13,9 +13,10 @@ class ChatroomMessagesController < ApplicationController
             serialized_data = ActiveModelSerializers::Adapter::Json.new(
                 ChatroomMessageSerializer.new(chatroommessage)
             ).serializable_hash
-            ChatroomMessagesChannel.broadcast_to chatroom, serialized_data
+            ChatroomMessagesChannel.broadcast_to(chatroom, serialized_data)
+            head :ok
         end
-        render json: serialized_data
+        # render json: serialized_data
     end
 
     # normal create function

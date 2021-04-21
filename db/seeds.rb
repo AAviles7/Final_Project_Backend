@@ -38,22 +38,22 @@ w2 = Workspace.create!(name: 'Order of the Pheonix', join_code: 'deathlyhallows'
 #     Workspace.create!(name: Faker::Movies::HarryPotter.spell, join_code: '123')
 # end
 
-m1 = WorkspaceMember.create!(workspace_id: w1.id, user_id: u1.id)
-m2 = WorkspaceMember.create!(workspace_id: w1.id, user_id: u2.id)
-m3 = WorkspaceMember.create!(workspace_id: w1.id, user_id: u3.id)
-m4 = WorkspaceMember.create!(workspace_id: w1.id, user_id: u4.id)
-m5 = WorkspaceMember.create!(workspace_id: w1.id, user_id: u5.id)
-m6 = WorkspaceMember.create!(workspace_id: w1.id, user_id: u6.id)
+m1 = WorkspaceMember.create!(workspace_id: w1.id, user_id: u1.id, remember: false)
+m2 = WorkspaceMember.create!(workspace_id: w1.id, user_id: u2.id, remember: false)
+m3 = WorkspaceMember.create!(workspace_id: w1.id, user_id: u3.id, remember: false)
+m4 = WorkspaceMember.create!(workspace_id: w1.id, user_id: u4.id, remember: false)
+m5 = WorkspaceMember.create!(workspace_id: w1.id, user_id: u5.id, remember: false)
+m6 = WorkspaceMember.create!(workspace_id: w1.id, user_id: u6.id, remember: false)
 
 10.times do
     temp = User.create!(username: Faker::Movies::HarryPotter.unique.character, password: '123', email: 'hogwarts@gmail.com', display_name: Faker::Movies::HarryPotter.character, bio: Faker::Movies::HarryPotter.quote, phone_number: '(123) 456-7890')
-    WorkspaceMember.create!(workspace_id: w1.id, user_id: temp.id)
+    WorkspaceMember.create!(workspace_id: w1.id, user_id: temp.id, remember: false)
 end
 
-m7 = WorkspaceMember.create!(workspace_id: w2.id, user_id: u7.id)
-m8 = WorkspaceMember.create!(workspace_id: w2.id, user_id: u8.id)
-m9 = WorkspaceMember.create!(workspace_id: w2.id, user_id: u9.id)
-m10 = WorkspaceMember.create!(workspace_id: w2.id, user_id: u10.id)
+m7 = WorkspaceMember.create!(workspace_id: w2.id, user_id: u7.id, remember: false)
+m8 = WorkspaceMember.create!(workspace_id: w2.id, user_id: u8.id, remember: false)
+m9 = WorkspaceMember.create!(workspace_id: w2.id, user_id: u9.id, remember: false)
+m10 = WorkspaceMember.create!(workspace_id: w2.id, user_id: u10.id, remember: false)
 
 c1 = Chatroom.create!(name: Faker::Movies::HarryPotter.unique.house, workspace_id: w1.id)
 c2 = Chatroom.create!(name: Faker::Movies::HarryPotter.unique.house, workspace_id: w1.id)
@@ -89,9 +89,9 @@ like1 = ChatmessageLike.create!(user_id: u3.id, chatroom_message_id: cmsg1.id)
 like1 = ChatmessageLike.create!(user_id: u4.id, chatroom_message_id: cmsg1.id)
 
 
-conv1 = Conversation.create!(sender_id: u1.id, receiver_id: u2.id)
-conv1 = Conversation.create!(sender_id: u1.id, receiver_id: u3.id)
-conv1 = Conversation.create!(sender_id: u1.id, receiver_id: u4.id)
-conv1 = Conversation.create!(sender_id: u5.id, receiver_id: u1.id)
-conv1 = Conversation.create!(sender_id: u6.id, receiver_id: u1.id)
+conv1 = Conversation.create!(sender_id: u1.id, receiver_id: u2.id, workspace_id: w1.id)
+conv1 = Conversation.create!(sender_id: u1.id, receiver_id: u3.id, workspace_id: w1.id)
+conv1 = Conversation.create!(sender_id: u1.id, receiver_id: u4.id, workspace_id: w1.id)
+conv1 = Conversation.create!(sender_id: u5.id, receiver_id: u1.id, workspace_id: w1.id)
+conv1 = Conversation.create!(sender_id: u6.id, receiver_id: u1.id, workspace_id: w1.id)
 # dm1 = DirectMessage.create!(user_id: u1.id, conversation_id: conv1.id, body: 'sample text')
