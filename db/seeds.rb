@@ -90,8 +90,11 @@ like1 = ChatmessageLike.create!(user_id: u4.id, chatroom_message_id: cmsg1.id)
 
 
 conv1 = Conversation.create!(sender_id: u1.id, receiver_id: u2.id, workspace_id: w1.id)
-conv1 = Conversation.create!(sender_id: u1.id, receiver_id: u3.id, workspace_id: w1.id)
-conv1 = Conversation.create!(sender_id: u1.id, receiver_id: u4.id, workspace_id: w1.id)
-conv1 = Conversation.create!(sender_id: u5.id, receiver_id: u1.id, workspace_id: w1.id)
-conv1 = Conversation.create!(sender_id: u6.id, receiver_id: u1.id, workspace_id: w1.id)
-# dm1 = DirectMessage.create!(user_id: u1.id, conversation_id: conv1.id, body: 'sample text')
+conv2 = Conversation.create!(sender_id: u1.id, receiver_id: u3.id, workspace_id: w1.id)
+conv3 = Conversation.create!(sender_id: u1.id, receiver_id: u4.id, workspace_id: w1.id)
+conv4 = Conversation.create!(sender_id: u5.id, receiver_id: u1.id, workspace_id: w1.id)
+conv5 = Conversation.create!(sender_id: u6.id, receiver_id: u1.id, workspace_id: w1.id)
+
+3.times do
+    DirectMessage.create!(body: 'sample text', conversation_id: conv1.id, user_id: u1.id)
+end

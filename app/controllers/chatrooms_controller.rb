@@ -10,9 +10,10 @@ class ChatroomsController < ApplicationController
             serialized_data = ActiveModelSerializers::Adapter::Json.new(
                 ChatroomSerializer.new(chatroom)
             ).serializable_hash
-            ChatroomsChannel.broadcast_to 'chatrooms_channel', serialized_data
+            ActionCable.server.broadcast 'chatrooms_channel', serialized_data
+            head :ok
         end
-        render json: chatroom
+        # render json: serialized_data
     end
 
     def show
