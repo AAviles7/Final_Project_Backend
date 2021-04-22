@@ -19,7 +19,7 @@ User.destroy_all
 
 u1 = User.create!(username: 'harry', password: '123', email: 'hogwarts@gmail.com', display_name: 'Harry Potter', bio: Faker::Movies::HarryPotter.unique.quote, phone_number: '(123) 456-7890')
 u2 = User.create!(username: 'ron', password: '123', email: 'hogwarts@gmail.com', display_name: 'Ron Weasley', bio: Faker::Movies::HarryPotter.unique.quote, phone_number: '(123) 456-7890')
-u3 = User.create!(username: Faker::Movies::HarryPotter.unique.character, password: '123', email: 'hogwarts@gmail.com', display_name: Faker::Movies::HarryPotter.unique.character, bio: Faker::Movies::HarryPotter.unique.quote, phone_number: '(123) 456-7890')
+u3 = User.create!(username: 'her', password: '123', email: 'hogwarts@gmail.com', display_name: 'Hermione Granger', bio: Faker::Movies::HarryPotter.unique.quote, phone_number: '(123) 456-7890')
 u4 = User.create!(username: Faker::Movies::HarryPotter.unique.character, password: '123', email: 'hogwarts@gmail.com', display_name: Faker::Movies::HarryPotter.unique.character, bio: Faker::Movies::HarryPotter.unique.quote, phone_number: '(123) 456-7890')
 u5 = User.create!(username: Faker::Movies::HarryPotter.unique.character, password: '123', email: 'hogwarts@gmail.com', display_name: Faker::Movies::HarryPotter.unique.character, bio: Faker::Movies::HarryPotter.unique.quote, phone_number: '(123) 456-7890')
 u6 = User.create!(username: Faker::Movies::HarryPotter.unique.character, password: '123', email: 'hogwarts@gmail.com', display_name: Faker::Movies::HarryPotter.unique.character, bio: Faker::Movies::HarryPotter.unique.quote, phone_number: '(123) 456-7890')
@@ -90,7 +90,6 @@ like1 = ChatmessageLike.create!(user_id: u4.id, chatroom_message_id: cmsg1.id)
 
 
 conv1 = Conversation.create!(sender_id: u1.id, receiver_id: u2.id, workspace_id: w1.id)
-conv2 = Conversation.create!(sender_id: u1.id, receiver_id: u3.id, workspace_id: w1.id)
 conv3 = Conversation.create!(sender_id: u1.id, receiver_id: u4.id, workspace_id: w1.id)
 conv4 = Conversation.create!(sender_id: u5.id, receiver_id: u1.id, workspace_id: w1.id)
 conv5 = Conversation.create!(sender_id: u6.id, receiver_id: u1.id, workspace_id: w1.id)

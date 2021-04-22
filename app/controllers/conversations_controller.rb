@@ -8,7 +8,8 @@ class ConversationsController < ApplicationController
     def create
         conversation = Conversation.create!({
             sender_id: permitted_params['sender_id'],
-            receiver_id: permitted_params['receiver_id']
+            receiver_id: permitted_params['receiver_id'],
+            workspace_id: permitted_params['workspace_id']
         })
         render json: conversation
     end
@@ -19,7 +20,7 @@ class ConversationsController < ApplicationController
     end
 
     def permitted_params
-        params.require(:conversation).permit(:sender_id, :receiver_id)
+        params.require(:conversation).permit(:sender_id, :receiver_id, :workspace_id)
     end
 
 end

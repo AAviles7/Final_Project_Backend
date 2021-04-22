@@ -2,7 +2,7 @@ class DirectmessageLikesController < ApplicationController
 
     def index
         directmessagelikes = DirectmessageLike.all
-        render json: directmessagelikes
+        render json: directmessagelikes, include: [:user]
     end
 
     def create
@@ -10,12 +10,12 @@ class DirectmessageLikesController < ApplicationController
             user_id: permitted_params['user_id'],
             direct_message_id: permitted_params['direct_message_id']
         })
-        render json: directmessagelike
+        render json: directmessagelike, include: [:user]
     end
 
     def show
         directmessagelike = DirectmessageLike.find_by(id: params[:id])
-        render json: directmessagelike
+        render json: directmessagelike, include: [:user]
     end
 
     def destroy
