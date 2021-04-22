@@ -5,7 +5,7 @@ class ChatroomMessagesController < ApplicationController
         render json: chatroommessages, include: [:chatmessage_likes, :user]
     end
 
-    # create for Action Cable
+    # Create Function for Action Cable
     def create
         chatroommessage = ChatroomMessage.new(permitted_params)
         chatroom = Chatroom.find(permitted_params[:chatroom_id])

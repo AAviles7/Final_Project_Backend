@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :directmessage_likes
   resources :chatmessage_likes
   resources :chatrooms
   resources :conversations

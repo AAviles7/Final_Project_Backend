@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 10) do
+ActiveRecord::Schema.define(version: 11) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,6 +73,15 @@ ActiveRecord::Schema.define(version: 10) do
     t.index ["user_id"], name: "index_direct_messages_on_user_id"
   end
 
+  create_table "directmessage_likes", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "direct_message_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["direct_message_id"], name: "index_directmessage_likes_on_direct_message_id"
+    t.index ["user_id"], name: "index_directmessage_likes_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "password_digest"
@@ -111,6 +120,8 @@ ActiveRecord::Schema.define(version: 10) do
   add_foreign_key "conversations", "workspaces"
   add_foreign_key "direct_messages", "conversations"
   add_foreign_key "direct_messages", "users"
+  add_foreign_key "directmessage_likes", "direct_messages"
+  add_foreign_key "directmessage_likes", "users"
   add_foreign_key "workspace_members", "users"
   add_foreign_key "workspace_members", "workspaces"
 end

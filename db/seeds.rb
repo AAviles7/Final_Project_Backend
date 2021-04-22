@@ -98,3 +98,6 @@ conv5 = Conversation.create!(sender_id: u6.id, receiver_id: u1.id, workspace_id:
 3.times do
     DirectMessage.create!(body: 'sample text', conversation_id: conv1.id, user_id: u1.id)
 end
+
+conv6 = Conversation.create!(sender_id: u7.id, receiver_id: u8.id, workspace_id: w2.id)
+conv7 = Conversation.create!(sender_id: u10.id, receiver_id: u9.id, workspace_id: w2.id)
